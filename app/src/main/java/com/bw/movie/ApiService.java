@@ -18,6 +18,7 @@ import com.bw.movie.band.movieb.ComingSoon;
 import com.bw.movie.band.movieb.FindHot;
 import com.bw.movie.band.movieb.FindMoviesDetail;
 import com.bw.movie.band.movieb.FindRelease;
+import com.bw.movie.band.movieb.FindSeatInfo;
 import com.bw.movie.band.movieb.FindSoonMovie;
 
 import io.reactivex.Observable;
@@ -104,4 +105,7 @@ public interface ApiService {
     Observable<FindMoviesDetail> findMoviesDetail
             (@Header("userId")int userId, @Header("sessionId") String sessionId
                     ,@Query("movieId") int movieId);
+
+    @GET("movieApi/tool/v2/banner")
+    Observable<FindSeatInfo> FindSeatInfo(@Query("hallId") int hallId);
 }

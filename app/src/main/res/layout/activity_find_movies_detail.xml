@@ -6,6 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".mvp.view.activity.FindMoviesDetailActivity">
+
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -111,7 +116,12 @@
                 </RadioGroup>
             </LinearLayout>
         </LinearLayout>
+        <Button
+            android:background="#1D00BCD4"
+            android:id="@+id/vv"
 
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_10" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -137,9 +147,36 @@
                 android:background="#E91E63"
                 android:gravity="center"
                 android:text="选坐购票"
-                android:textColor="#fff" />
+                android:textColor="#F3FFFFFF" />
         </LinearLayout>
+
+
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/ff"
+        android:visibility="gone"
+        android:orientation="vertical"
+        android:background="#fff"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <Button
+            android:id="@+id/ii"
+            android:text="@string/app_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
+        </com.google.android.material.tabs.TabLayout>
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/vp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </androidx.viewpager.widget.ViewPager>
+    </LinearLayout>
+</LinearLayout>
 </RelativeLayout>

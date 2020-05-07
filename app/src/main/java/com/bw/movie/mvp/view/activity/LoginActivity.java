@@ -17,6 +17,8 @@ import com.bw.movie.mvp.presenter.PresenterLogin;
 import com.bw.movie.util.EncryptUtil;
 import com.bw.movie.util.MyRexUtils;
 
+import org.greenrobot.eventbus.EventBus;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -65,6 +67,9 @@ public class LoginActivity extends BaseActivity<PresenterLogin> implements ICont
             LoginBand.ResultBean result = bead.getResult();
             String sessionId = result.getSessionId();
             int userId = result.getUserId();
+
+            EventBus.getDefault().post(new MessageEvent(sessionId));
+            EventBus.getDefault().post(new MessageEvent(userId));
             hideDialog();
             finish();
         }
@@ -106,4 +111,17 @@ public class LoginActivity extends BaseActivity<PresenterLogin> implements ICont
                 break;
         }
     }
+    public class MessageEvent {
+        public String sessionId;
+        public int userId;
+
+        public MessageEvent(String aName) {
+            this.sessionId = aName;
+        }
+
+        public MessageEvent(int aName) {
+            this.userId = aName;
+        }
+    }
+
 }

@@ -16,6 +16,8 @@ import com.bumptech.glide.Glide;
 import com.bw.movie.R;
 import com.jaeger.library.StatusBarUtil;
 
+import org.greenrobot.eventbus.EventBus;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import pub.devrel.easypermissions.EasyPermissions;
@@ -41,6 +43,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
         if (mPresenter != null) {
             mPresenter.attached(this);
         }
+     //   EventBus.getDefault().register(this);
         StatusBarUtil.hideFakeStatusBarView(this);
         ButterKnife.bind(this);
 
@@ -61,6 +64,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        EventBus.getDefault().unregister(this);
         if (mPresenter != null) {
             mPresenter.dttached();
         }

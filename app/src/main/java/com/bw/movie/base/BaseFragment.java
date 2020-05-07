@@ -17,6 +17,8 @@ import com.bumptech.glide.Glide;
 import com.bw.movie.R;
 import com.jaeger.library.StatusBarUtil;
 
+import org.greenrobot.eventbus.EventBus;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -41,6 +43,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
         // Inflate the layout for this fragment
 
         View inflate = inflater.inflate(layoutId(), container, false);
+     //   EventBus.getDefault().register(this);
         mPresenter = initPrenher();
         if (mPresenter != null) {
             mPresenter.attached(this);
@@ -91,6 +94,7 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+   //     EventBus.getDefault().unregister(this);
         if (mPresenter != null) {
             mPresenter.dttached();
         }
@@ -142,9 +146,9 @@ public abstract class BaseFragment<P extends BasePresenter> extends Fragment imp
         mLoadingDialog.show();
     }
 
-    public void hideDialog() {
-        if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
-            mLoadingDialog.dismiss();
-        }
-    }
+//    public void hideDialog() {
+//        if (mLoadingDialog != null && mLoadingDialog.isShowing()) {
+//            mLoadingDialog.dismiss();
+//        }
+//    }
 }
